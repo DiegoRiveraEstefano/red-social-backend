@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.permissions import AllowAny
+from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('post/', include("post.urls")),
     path('user/', include("user.urls")),
+    path("api/docs/", include_docs_urls(title="Api Docs", public=False, permission_classes=[AllowAny])),
 ]
